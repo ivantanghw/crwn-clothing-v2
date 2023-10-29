@@ -17,7 +17,7 @@ const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password } = formFields;
 
-    const { setCurrentUser } = useContext(UserContext);
+    // no longer require - const { setCurrentUser } = useContext(UserContext);
 
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
@@ -27,8 +27,8 @@ const SignInForm = () => {
     // <button onClick={signInWithGoogleRedirect}>Sign in with Google Redirect</button>
     const signInWithGoogle = async () => {
         const { user } = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user);
-        setCurrentUser(user);
+        createUserDocumentFromAuth(user);
+        // no longer require - setCurrentUser(user);
     }
 
     const handleSubmit = async (event) => {
@@ -39,7 +39,7 @@ const SignInForm = () => {
             // destructure the user object
             const { user } = await signInAuthUserWithEmailAndPassword(email, password);
             // Get the "user" object into the context
-            setCurrentUser(user);
+            // no longer require - setCurrentUser(user);
             resetFormFields();
 
         } catch (error) {
