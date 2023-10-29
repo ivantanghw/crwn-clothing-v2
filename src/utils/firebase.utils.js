@@ -1,11 +1,13 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+// import { getAnalytics } from "firebase/analytics";
 import { getAuth, 
     signInWithRedirect, 
     signInWithPopup, 
     GoogleAuthProvider,
-    createUserWithEmailAndPassword
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut
  } from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -18,6 +20,8 @@ import {
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+// eslint-disable-next-line
 const firebaseConfig = {
   apiKey: "AIzaSyCHxEtTbZfGQEy_1JlXAR1Yt7BsqYmw-wE",
   authDomain: "crwnlearn-clothing-db.firebaseapp.com",
@@ -30,7 +34,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-const analytics = getAnalytics(firebaseApp);
+// const analytics = getAnalytics(firebaseApp);
 
 const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
@@ -82,4 +86,12 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
     if (!email || !password) return;
   
     return await createUserWithEmailAndPassword(auth, email, password);
-  };
+  }; 
+
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+    if (!email || !password) return;
+  
+    return await signInWithEmailAndPassword(auth, email, password);
+  }; 
+
+export const SignOutUser = async () => await signOut(auth);
