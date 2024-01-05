@@ -17,3 +17,12 @@ const Button = ({ children, buttonType, ...otherProps }) => {
 };
 
 export default Button;
+
+/* Button is used in sign-in-form component
+                <div className='buttons-container'>
+                    <Button buttonType='' type='submit'>Sign In</Button>
+                    <Button buttonType='google' type='button' onClick={signInWithGoogle}>
+                        Google Sign In
+                    </Button>
+                </div>
+*/
