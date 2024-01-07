@@ -9,15 +9,16 @@ import {
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc, collection, writeBatch } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDDU4V-_QV3M8GyhC9SVieRTDM4dbiT0Yk',
-  authDomain: 'crwn-clothing-db-98d4d.firebaseapp.com',
-  projectId: 'crwn-clothing-db-98d4d',
-  storageBucket: 'crwn-clothing-db-98d4d.appspot.com',
-  messagingSenderId: '626766232035',
-  appId: '1:626766232035:web:506621582dab103a4d08d6',
+  apiKey: "AIzaSyCHxEtTbZfGQEy_1JlXAR1Yt7BsqYmw-wE",
+  authDomain: "crwnlearn-clothing-db.firebaseapp.com",
+  projectId: "crwnlearn-clothing-db",
+  storageBucket: "crwnlearn-clothing-db.appspot.com",
+  messagingSenderId: "1020642940211",
+  appId: "1:1020642940211:web:24e273430861aae9299a46",
+  measurementId: "G-6X6YJFQSKF"
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
@@ -35,6 +36,12 @@ export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, googleProvider);
 
 export const db = getFirestore();
+
+//because we're adding to an external source, most likely to be async function
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+  const collectionRef = collection(db, collectionKey);
+}
+
 
 export const createUserDocumentFromAuth = async (
   userAuth,
